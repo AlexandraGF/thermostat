@@ -4,6 +4,7 @@ var Thermostat = function (){
   minimumTemp = 10;
   maxpsonTemp = 25;
   maxpsoffTemp = 32;
+  this.powerSave = true;
 };
 
 
@@ -30,6 +31,16 @@ Thermostat.prototype.down = function (num) {
 
 Thermostat.prototype.currentTemp = function () {
   return currentTemp;
+};
+
+Thermostat.prototype.isPowerSave = function () {
+  this.powerSave = true;
+
+
+};
+
+Thermostat.prototype.switchOff = function () {
+  this.powerSave = false;
 };
 
 
