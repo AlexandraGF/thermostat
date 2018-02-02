@@ -8,9 +8,14 @@ var Thermostat = function (){
 };
 
 
-Thermostat.prototype.start = function () {
-  // grades = 20;
-  return DEFAULT_TEMP;
+// Thermostat.prototype.start = function () {
+//   // grades = 20;
+//   return DEFAULT_TEMP;
+// };
+
+Thermostat.prototype.reset = function () {
+  return this.currentTemp = DEFAULT_TEMP;
+
 };
 
 Thermostat.prototype.up = function (num) {
@@ -30,9 +35,9 @@ Thermostat.prototype.down = function (num) {
     return this.currentTemp -= num;
 };
 
-Thermostat.prototype.currentTemp = function () {
-  return currentTemp;
-};
+// Thermostat.prototype.currentTemp = function () {
+//   return currentTemp;
+// };
 
 Thermostat.prototype.isPowerSave = function () {
   this.powerSave = true;
@@ -53,6 +58,17 @@ Thermostat.prototype._isPowerS = function () {
  };
 };
 
+Thermostat.prototype.usage = function () {
+  if (this.currentTemp > 24) {
+    return 'High usage';
+  };
+  if (this.currentTemp > 17) {
+    return 'Medium usage';
+  };
+  if (this.currentTemp > 9) {
+    return 'Low usage';
+  };
+};
 
 
 

@@ -2,13 +2,13 @@ describe('Thermostat', function (){
   // var thermostat
 });
 
-  describe('thermostat initial state', function(){
-    it('starts at 20C', function() {
-      thermostat = new Thermostat();
-      expect(thermostat.start()).toEqual(20);
-    });
-
-  });
+  // describe('thermostat initial state', function(){
+  //   it('starts at 20C', function() {
+  //     thermostat = new Thermostat();
+  //     expect(thermostat.start()).toEqual(20);
+  //   });
+  //
+  // });
 
   describe('thermostat can ', function(){
     it('increase the temperature with the up function', function() {
@@ -36,6 +36,13 @@ describe('Thermostat', function (){
       expect(thermostat.currentTemp).toEqual(19);
     });
 
+    it('be reset at 20C', function() {
+      thermostat = new Thermostat();
+      thermostat.up(5);
+      thermostat.reset();
+      expect(thermostat.currentTemp).toEqual(20);
+    });
+
   });
 
     describe('minimum temperature ', function () {
@@ -61,6 +68,26 @@ describe('Thermostat', function (){
   });
 
   });
+
+  describe('check the thermostat current energy usage at ', function(){
+    it('high-usage', function(){
+      thermostat = new Thermostat();
+      thermostat.up(7);
+      expect(thermostat.usage()).toEqual("High usage");
+    });
+    it('medium-usage', function(){
+      thermostat = new Thermostat();
+      thermostat.down(2);
+      expect(thermostat.usage()).toEqual("Medium usage");
+    });
+    it('low-usage', function(){
+      thermostat = new Thermostat();
+      thermostat.down(5);
+      expect(thermostat.usage()).toEqual("Low usage");
+    });
+  });
+
+
 
 
 
