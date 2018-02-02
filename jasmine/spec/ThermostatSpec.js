@@ -17,6 +17,18 @@ describe('Thermostat', function (){
       expect(thermostat.currentTemp).toEqual(22);
     });
 
+    it('increase the temperature no more than 25C when power saving is on', function(){
+      thermostat = new Thermostat();
+      thermostat.up(6);
+      expect(thermostat.currentTemp).toEqual(25);
+    });
+
+    it('increase the temperature no more than 32C when power saving is off', function(){
+      thermostat = new Thermostat();
+      thermostat.up(13);
+      expect(thermostat.currentTemp).toEqual(32);
+    });
+
     it('decrease the temperature with the down function', function() {
       thermostat = new Thermostat();
       thermostat.down(1)
