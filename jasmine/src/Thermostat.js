@@ -14,12 +14,13 @@ Thermostat.prototype.start = function () {
 };
 
 Thermostat.prototype.up = function (num) {
-  if ((this.currentTemp + num) > MAX_POWER_SAVING_ON_TEMP) {
-    return this.currentTemp = MAX_POWER_SAVING_ON_TEMP;
-  }
+    if ((this.currentTemp + num) > this._isPowerS()) {
+      return this.currentTemp = this._isPowerS();
+    }
 
-  this.currentTemp += num;
+    this.currentTemp += num;
 };
+
 
 Thermostat.prototype.down = function (num) {
     if ((this.currentTemp - num) < MINIMUM_TEMP) {
@@ -43,7 +44,14 @@ Thermostat.prototype.switchOff = function () {
   this.powerSave = false;
 };
 
-
+Thermostat.prototype._isPowerS = function () {
+ if (this.powerSave == true) {
+     return MAX_POWER_SAVING_ON_TEMP;
+ };
+ if (this.powerSave == false) {
+     return MAX_POWER_SAVING_OFF_TEMP;
+ };
+};
 
 
 
